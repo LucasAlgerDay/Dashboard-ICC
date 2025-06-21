@@ -691,3 +691,240 @@ html, body {
 .dark .modal-content {
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.6);
 }
+
+/* Loading Screen */
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease-out;
+}
+
+.loading-screen.light {
+  background-color: #f5f7fa;
+  color: #212529;
+}
+
+.loading-screen.dark {
+  background-color: #121212;
+  color: #e9ecef;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top-color: #4361ee;
+  animation: spin 1s ease-in-out infinite;
+}
+
+.loading-screen.dark .loading-spinner {
+  border-top-color: #4cc9f0;
+}
+
+.loading-text {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Banner de error */
+.api-error-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 12px;
+  text-align: center;
+  font-weight: bold;
+  z-index: 1000;
+  animation: slideDown 0.5s ease-out;
+}
+
+.api-error-banner.light {
+  background-color: #ffebee;
+  color: #c62828;
+  border-bottom: 2px solid #ef9a9a;
+}
+
+.api-error-banner.dark {
+  background-color: #4a2222;
+  color: #ffcdd2;
+  border-bottom: 2px solid #7b1fa2;
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(0); }
+}
+
+/* Reloj con segundos */
+.time {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Pantalla de API no disponible */
+.api-offline-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 20px;
+}
+
+.api-offline-message {
+  max-width: 600px;
+  text-align: center;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.api-offline-container.light .api-offline-message {
+  background-color: #ffebee;
+  border: 2px solid #ef9a9a;
+  color: #c62828;
+}
+
+.api-offline-container.dark .api-offline-message {
+  background-color: #4a2222;
+  border: 2px solid #7b1fa2;
+  color: #ffcdd2;
+}
+
+.retry-button {
+  padding: 10px 20px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.retry-button.light {
+  background-color: #4361ee;
+  color: white;
+}
+
+.retry-button.dark {
+  background-color: #4cc9f0;
+  color: #121212;
+}
+
+.loading-placeholder {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 40px;
+  font-size: 1.2rem;
+}
+/* Line controls styles */
+.line-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.line-selector-container {
+  position: relative;
+}
+
+/* Main line selector */
+.main-line-selector {
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: none;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.main-line-selector.light {
+  background-color: #4361ee;
+  color: white;
+}
+
+.main-line-selector.dark {
+  background-color: #4cc9f0;
+  color: #121212;
+}
+
+/* Sub line selector */
+.sub-line-selector {
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sub-line-selector.light {
+  background-color: #e9ecef;
+  color: #212529;
+}
+
+.sub-line-selector.dark {
+  background-color: #333;
+  color: #e9ecef;
+}
+
+/* Dropdowns */
+.main-line-dropdown, .sub-line-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 5px;
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow-hover);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  min-width: 100px;
+  overflow: hidden;
+  border: 1px solid var(--medium-gray);
+}
+
+.main-line-dropdown button, .sub-line-dropdown button {
+  padding: 8px 12px;
+  border: none;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+}
+
+.main-line-dropdown.light button, .sub-line-dropdown.light button {
+  color: var(--black);
+  background: var(--white);
+}
+
+.main-line-dropdown.dark button, .sub-line-dropdown.dark button {
+  color: var(--black);
+  background: var(--light-gray);
+}
+
+.main-line-dropdown button:hover, .sub-line-dropdown button:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.main-line-dropdown button.active, .sub-line-dropdown button.active {
+  font-weight: bold;
+  background-color: var(--primary-dark);
+  color: white;
+}
